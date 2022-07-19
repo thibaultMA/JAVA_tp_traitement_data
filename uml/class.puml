@@ -1,0 +1,54 @@
+@startuml diagramme de classes 
+class Acteur{
+    
+    identite
+    urlActeur
+}
+class Realisateur{
+    identite
+    urlRealisateur
+}
+
+class Naissance {
+    dateNaissance
+    lieuNaissance
+}
+
+class Roles {
+    characterName
+    
+}
+
+class Pays {
+    nomPays
+    url
+}
+class LieuTournage {
+    etatDept
+    pays
+    ville
+}
+class Genre {
+    nom
+}
+
+class Film {
+    anneeSortie
+    nomFilm
+    lieuTournage
+    langue
+    plot
+    urlFilm
+}
+
+Acteur "1"<-->"1" Naissance
+Acteur "1.*"<-->"1.*" Roles
+Roles "1.*" <-->"1.*" Film
+LieuTournage "1" <-->"1.*" Film
+Acteur "1.*"  <-->"1.*" Film :acteurs principaux
+Acteur "1.*" <-->"1.*" Film : casting
+Pays "1" <-->"1.*" Film
+Realisateur "1.*"<-->"1.*" Film
+Genre "1.*"<-->"1.*" Film
+
+@enduml
